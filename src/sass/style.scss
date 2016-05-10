@@ -1,0 +1,100 @@
+//.img-master {
+//  width: 100%;
+//  height: auto;
+//}
+.pin {
+  position: absolute;
+  z-index: 5;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+}
+.pin-text {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  width: 300px;
+  padding: 15px;
+  background-color: #fff;
+}
+/* Reset */
+.reset-btn {
+  padding: 0;
+  border: 0;
+}
+h1, p, dl, dt, dd {
+  padding: 0;
+  margin: 0;
+}
+
+/* Player Card */
+.player-card {
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 10px;
+  font-size: .875rem;
+  line-height: 1.3;
+  transition: max-height .2s;
+  &:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  p { margin-bottom: 10px; }
+  &-wrapper {
+    box-sizing: border-box;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 20%;
+    min-width: 225px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px #000;
+  }
+  &-header {
+    margin-bottom: 3px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    span {
+      font-size: .875rem;
+      font-weight: 300;
+    }
+  }
+  &-tag {
+    font-style: italic;;
+  }
+  &-dl {
+    margin-bottom: 10px;
+    dt {
+      float: left;
+      padding-right: 5px;
+      font-weight: 700;
+    }
+  }
+  &-hpform {
+    display: inline;
+    input {
+      width: 30px;
+    }
+  }
+  &.collapsed {
+    max-height: 29px;
+    overflow: hidden;
+  }
+  &.expanded { max-height: 300px; }
+}
+
+.hpform {
+  &-span { padding-right: 5px; }
+  &-input {
+    position: relative;
+    top: 0px;
+    height: 16px;
+    padding: 2px 0px 0px;
+    border: 0px none;
+    font-size: 0.875rem;
+    text-align: center;
+    background-color: #dadada;
+  }
+}
