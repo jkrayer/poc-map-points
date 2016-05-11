@@ -1,14 +1,15 @@
 'use strict';
 
-const App = import '../components/app.jsx';
-const PlayerContainer = import '../components/player-container.jsx';
+import App from '../components/app.jsx';
+import Home from '../components/home.jsx';
 
-export default const Routes = {
+const Routes = {
   path: '/',
   component: App,
-  indexRoute: { component: PlayerContainer },
+  indexRoute: { component: Home },
   childRoutes: [
-    //<Redirect from='login' to='sessions/new' />
-    //{ path: 'position/:id', component: Position }
+    { path: 'map/:urlString', component: Map }
   ]
 };
+
+export default Routes;

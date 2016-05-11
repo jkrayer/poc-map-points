@@ -12,9 +12,10 @@ export default class App extends React.Component {
     return (
       <div className="app-wrapper">
         {
-          data.map((m) => {
-            return <img src={m.imagePath} />;
-          })
+          React.cloneElement(
+            this.props.children,
+            {}
+          )
         }
       </div>
     );
