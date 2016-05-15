@@ -1,12 +1,12 @@
 'use strict';
 
 import App from '../components/app.jsx';
-import Home from '../components/home.jsx';
+import HomeContainer from '../components/home-container.jsx';
 
 const Routes = {
   path: '/',
   component: App,
-  indexRoute: { component: Home },
+  indexRoute: { component: HomeContainer },
   childRoutes: [
     { path: 'map/:urlString', component: Map }
   ]

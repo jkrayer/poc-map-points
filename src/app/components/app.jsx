@@ -7,8 +7,6 @@ export default class App extends React.Component {
     super(props);
   }
   render () {
-    console.log(this.props);
-    let { data } = this.props;
     return (
       <div className="app-wrapper">
         {
