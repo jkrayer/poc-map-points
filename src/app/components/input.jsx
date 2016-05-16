@@ -19,6 +19,7 @@ export default class Input extends React.Component {
     return(
       <label>{this.props.label}
         <input
+          name={this.props.name}
           onChange={this.handleChange}
           type="text"
           value={this.state.input}
@@ -30,5 +31,6 @@ export default class Input extends React.Component {
 
 Input.propTypes = {
   defaultVal: React.PropTypes.string,
-  label: React.PropTypes.string.isRequired
+  label: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired
 };
