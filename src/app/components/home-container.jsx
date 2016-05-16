@@ -10,8 +10,9 @@ export default class HomeContainer extends React.Component {
     this.state = { maps: MapStore.getMaps() };
   }
   componentDidMount () {
+    var self = this;
     MapStore.onChange(function (data) {
-      this.setState({maps: data});
+      self.setState({maps: data});
     });
   }
   render () {
