@@ -1,8 +1,8 @@
-var Dispatcher = require('../dispatcher');
-var AjaxHelper = require('../app/helpers/ajax');
+import Dispatcher from '../dispatcher';
+import AjaxHelper from '../app/helpers/ajax';
 
 function MapStore() {
-  var maps = [];
+  let maps = [];
 
   AjaxHelper.get('/api/maps')
   .then(function(data){
@@ -10,7 +10,7 @@ function MapStore() {
     triggerListeners();
   });
 
-  var listeners = [];
+  let listeners = [];
 
   function getMaps() {
     return maps;
@@ -20,8 +20,9 @@ function MapStore() {
     listeners.push(listener);
   }
 
-  function addPin(pin) {
-
+  function addMap(map) {
+    maps.push(map);
+    triggerListeners();
   }
 
   function triggerListeners(){
@@ -34,7 +35,7 @@ function MapStore() {
     var split = event.type.split(':');
     if (split[0] === 'Map') {
       switch (split[1]) {
-          case 'AddPin':
+          case 'AddMap':
             addPin(event.payload);
             break;
           default:
@@ -44,6 +45,7 @@ function MapStore() {
   });
 
   return {
+    addMap: addMap,
     getMaps: getMaps,
     onChange: onChange
   };
