@@ -3,6 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router'
 import Input from './input.jsx';
+import { objectifyForm } from '../helpers/forms';
+import { urlSafeString } from '../helpers/strings';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -11,8 +13,8 @@ export default class Home extends React.Component {
   }
   handleSubmit (event) {
     event.preventDefault();
-    //gather inputs
-    //make urlSafeName
+    let data = objectifyForm(event.target);
+    data.urlSafeName = urlSafeString(data.mapName);
     //pass to server
     //optimistic updates
   }
