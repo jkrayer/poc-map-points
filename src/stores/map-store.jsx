@@ -17,7 +17,7 @@ function MapStore() {
   }
 
   function getMap(mapId) {
-    let locationMap;
+    let locationMap = {};
     maps.filter(
       function(_map, _index) {
         if (_map._id === mapId) {
