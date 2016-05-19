@@ -1,10 +1,10 @@
 var Dispatcher = require('../dispatcher');
 
 module.exports = {
-  addPin: function (map) {
+  add: function (map) {
     Dispatcher.dispatch({
       payload: map,
-      type: 'Map:AddPin'
+      type: 'Map:Add'
     });
   }
 };

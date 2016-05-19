@@ -23,6 +23,7 @@ function MapStore() {
   function addMap(map) {
     maps.push(map);
     triggerListeners();
+    //RestHelper.post('api/items', item); //.then() for error handling
   }
 
   function triggerListeners(){
@@ -35,8 +36,8 @@ function MapStore() {
     var split = event.type.split(':');
     if (split[0] === 'Map') {
       switch (split[1]) {
-          case 'AddMap':
-            addPin(event.payload);
+          case 'Add':
+            addMap(event.payload);
             break;
           default:
             break;
@@ -45,7 +46,6 @@ function MapStore() {
   });
 
   return {
-    addMap: addMap,
     getMaps: getMaps,
     onChange: onChange
   };

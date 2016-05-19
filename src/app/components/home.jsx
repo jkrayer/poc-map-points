@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import Input from './input.jsx';
 import { objectifyForm } from '../helpers/forms';
 import { urlSafeString } from '../helpers/strings';
-import MapStore from '../../stores/map-store.jsx';
+import MapActions from '../../actions/maps-action-creator.jsx';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class Home extends React.Component {
     event.preventDefault();
     let map = objectifyForm(event.target);
     map.urlSafeName = urlSafeString(map.mapName);
-    MapStore.addMap(map);
+    MapActions.add(map);
   }
   render () {
     let lis = this.props.maps.map( (m) => {
