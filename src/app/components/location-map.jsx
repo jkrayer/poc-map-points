@@ -7,8 +7,15 @@ export default class LocationMap extends React.Component {
     super(props);
   }
   render () {
+    let { imagePath, mapName } = this.props.locationMap;
     return (
-      <div>{"Location Map"}</div>
+      <div>
+        <h1>{"Location Map"}</h1>
+        <img
+            alt={mapName}
+            src={imagePath}
+        />
+      </div>
     );
   }
 }
