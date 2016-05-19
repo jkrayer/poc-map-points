@@ -16,4 +16,12 @@ module.exports = function (app) {
           res.status(300).send();
       });
     });
+  app.route('/api/maps/:id')
+    .delete(function(req, res) {
+      Map.findOne({
+        _id: req.params.id
+      }).remove(function (error, result){
+        res.status(300).send();
+      });
+    });
 }
