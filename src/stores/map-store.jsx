@@ -16,6 +16,19 @@ function MapStore() {
     return maps;
   }
 
+  function getMap(mapId) {
+    let locationMap;
+    maps.filter(
+      function(_map, _index) {
+        if (_map._id === mapId) {
+          locationMap = _map;
+          return;
+        }
+      }
+    );
+    return locationMap;
+  }
+
   function onChange(listener) {
     listeners.push(listener);
   }
@@ -52,19 +65,23 @@ function MapStore() {
     var split = event.type.split(':');
     if (split[0] === 'Map') {
       switch (split[1]) {
-          case 'Add':
-            addMap(event.payload);
-            break;
-          case 'Delete':
-            deleteMap(event.payload);
-            break;
-          default:
-            break;
+        case 'Add':
+          addMap(event.payload);
+          break;
+        case 'Delete':
+          deleteMap(event.payload);
+          break;
+        case 'GetMap':
+          getMap(event.payload);
+          break;
+        default:
+          break;
       }
     }
   });
 
   return {
+    getMap: getMap,
     getMaps: getMaps,
     onChange: onChange
   };
