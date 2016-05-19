@@ -10,7 +10,7 @@ const Routes = {
   indexRoute: { component: HomeContainer },
   childRoutes: [
     { path: 'maps/', component: HomeContainer },
-    { path: 'maps/:urlString', component: MapContainer }
+    { path: 'maps/:mapId', component: MapContainer }
   ]
 };
 
