@@ -26,6 +26,22 @@ function MapStore() {
     AjaxHelper.post('api/maps', map); //.then() for error handling
   }
 
+  function deleteMap(mapId) {
+    let index = -1;
+    maps.filter(
+      function(_map, _index) {
+        if (_map._id === mapId) {
+          index = _index;
+          return;
+        }
+      }
+    );
+
+    maps.splice(index, 1);
+    triggerListeners();
+    //AjaxHelper.del('api/maps/' + mapId);
+  }
+
   function triggerListeners(){
     listeners.forEach(function(listener){
       listener(maps);
@@ -39,6 +55,9 @@ function MapStore() {
           case 'Add':
             addMap(event.payload);
             break;
+            case 'Delete':
+              deleteMap(event.payload);
+              break;
           default:
             break;
       }
