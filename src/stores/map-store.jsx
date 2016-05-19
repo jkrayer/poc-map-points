@@ -55,9 +55,9 @@ function MapStore() {
           case 'Add':
             addMap(event.payload);
             break;
-            case 'Delete':
-              deleteMap(event.payload);
-              break;
+          case 'Delete':
+            deleteMap(event.payload);
+            break;
           default:
             break;
       }
