@@ -6,5 +6,11 @@ module.exports = {
       payload: map,
       type: 'Map:Add'
     });
+  },
+  delete: function (mapId) {
+    Dispatcher.dispatch({
+      payload: mapId,
+      type: 'Map:Delete'
+    });
   }
 };
