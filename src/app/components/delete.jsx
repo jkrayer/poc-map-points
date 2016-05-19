@@ -22,3 +22,7 @@ export default class Delete extends React.Component {
     );
   }
 }
+
+Delete.propTypes = {
+  id: React.PropTypes.string.isRequired
+};
