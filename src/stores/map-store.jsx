@@ -23,7 +23,7 @@ function MapStore() {
   function addMap(map) {
     maps.push(map);
     triggerListeners();
-    //RestHelper.post('api/items', item); //.then() for error handling
+    AjaxHelper.post('api/maps', map); //.then() for error handling
   }
 
   function triggerListeners(){
