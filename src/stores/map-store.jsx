@@ -39,7 +39,7 @@ function MapStore() {
 
     maps.splice(index, 1);
     triggerListeners();
-    //AjaxHelper.del('api/maps/' + mapId);
+    AjaxHelper.del('api/maps/' + mapId);
   }
 
   function triggerListeners(){
