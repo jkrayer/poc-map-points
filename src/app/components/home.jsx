@@ -23,7 +23,7 @@ export default class Home extends React.Component {
     let lis = this.props.maps.map( (m) => {
       return (
         <li key={m._id}>
-          <Link to={'/maps/' + m.urlSafeName}>{m.mapName}</Link>
+          <Link to={'/maps/' + m._id}>{m.mapName}</Link>
           <Delete id={m._id} />
         </li>
       );
