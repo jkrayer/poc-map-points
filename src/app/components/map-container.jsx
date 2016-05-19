@@ -12,7 +12,7 @@ export default class MapContainer extends React.Component {
   componentDidMount () {
     let self = this;
     MapStore.onChange(function (data) {
-      self.setState({ locationMap: MapStore.getMap(props.params.mapId) });
+      self.setState({ locationMap: MapStore.getMap(self.props.params.mapId) });
     });
   }
   render () {
