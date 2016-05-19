@@ -12,7 +12,6 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
   handleSubmit (event) {
     event.preventDefault();
@@ -20,15 +19,12 @@ export default class Home extends React.Component {
     map.urlSafeName = urlSafeString(map.mapName);
     MapActions.add(map);
   }
-  handleDelete (event) {
-console.log(event);
-  }
   render () {
     let lis = this.props.maps.map( (m) => {
       return (
         <li key={m._id}>
           <Link to={'/maps/' + m.urlSafeName}>{m.mapName}</Link>
-          <button type="button" onClick={this.handleDelete}>Delete</button>
+          <Delete id={m._id} />
         </li>
       );
     });
