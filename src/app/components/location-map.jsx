@@ -11,7 +11,7 @@ export default class LocationMap extends React.Component {
       addPinOn: false
     };
   }
-  handleAddPin (event) {
+  handleAddPin () {
     let { addPinOn } = this.state;
 
     //ignore second click
@@ -24,7 +24,13 @@ export default class LocationMap extends React.Component {
       addPinOn: !addPinOn
     });
     //listen for next click event
+    window.addEventListener('mousedown.addPin', this.addPin);
     //add pin at the selected location
+  }
+  addPin (event) {
+    console.log(31, event);
+
+    //window.removeEventListener('mousedown.addPin', this.addPin);
   }
   render () {
     let { imagePath, mapName } = this.props.locationMap;
