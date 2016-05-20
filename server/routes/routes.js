@@ -23,5 +23,16 @@ module.exports = function (app) {
       }).remove(function (error, result){
         res.status(300).send();
       });
+    })
+    .patch(function(req, res) {
+      Map.findOne({
+        _id: req.params.id
+      }, function (error, doc) {
+        for (let key in req.body) {
+          doc[key] = req.body[key]
+        }
+        doc.save();
+        res.status(200).send();
+      });
     });
 }
