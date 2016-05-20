@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MapActions from '../../actions/maps-action-creator.jsx';
 
 export default class LocationMap extends React.Component {
   constructor(props) {
@@ -9,8 +10,7 @@ export default class LocationMap extends React.Component {
     this.handleAddPin = this.handleAddPin.bind(this);
     this.addPin = this.addPin.bind(this);
     this.state = {
-      addPinOn: false,
-      pins: []
+      addPinOn: false
     };
   }
   handleAddPin () {
@@ -33,11 +33,14 @@ export default class LocationMap extends React.Component {
       x: event.clientX,
       y: event.clientY
     }];
+    let locationMap = JSON.parse(JSON.stringify(this.props.locationMap));
+    locationMap.pins = locationMap.pins.concat(pin);
 
     this.setState({
-      addPinOn: false,
-      pins: this.state.pins.concat(pin)
+      addPinOn: false
     });
+
+    MapActions.update(locationMap);
 
     document.removeEventListener('mousedown', this.addPin);
   }
@@ -59,7 +62,7 @@ export default class LocationMap extends React.Component {
               onClick={this.handleAddPin}
               type="button"
           >
-             {"Add Pin"}
+              {"Add Pin"}
           </button>
         </div>
         <img
