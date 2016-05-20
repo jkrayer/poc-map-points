@@ -30,8 +30,8 @@ export default class LocationMap extends React.Component {
   }
   addPin (event) {
     let pin = [{
-      x: event.clientX,
-      y: event.clientY
+      x: event.offsetX,
+      y: event.offsetY
     }];
     let locationMap = JSON.parse(JSON.stringify(this.props.locationMap));
     locationMap.pins = locationMap.pins.concat(pin);
