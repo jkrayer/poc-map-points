@@ -8,9 +8,6 @@ export default class GlobalToolbar extends React.Component {
     super(props);
   }
   render () {
-    let { pathname } = this.props.location;
-    let isMapPage = pathname.indexOf('/map') === 0;
-
     return (
       <nav className="global-navigation global-navigation-fixed">
         <div className="global-navigation-inner-wrapper">
@@ -20,9 +17,3 @@ export default class GlobalToolbar extends React.Component {
     );
   }
 }
-
-GlobalToolbar.propTypes = {
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired
-  })
-};
