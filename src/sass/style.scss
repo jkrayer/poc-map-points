@@ -103,6 +103,13 @@ h1, p, dl, dt, dd {
 .home-wrapper {
   margin-top: 70px;
 }
-
+.map-pin {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin: -8px 0 0 -8px;
+  background-color: red;
+}
 @import "global-navigation";
 @import "control-panel";
