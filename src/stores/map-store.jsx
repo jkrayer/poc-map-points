@@ -55,6 +55,21 @@ function MapStore() {
     AjaxHelper.del('api/maps/' + mapId);
   }
 
+  function updateMap(map) {
+    let index = -1;
+    maps.filter(
+      function(_map, _index) {
+        if (_map._id === map._id) {
+          index = _index;
+          return;
+        }
+      }
+    );
+    maps.splice(index, 1, map);
+    triggerListeners();
+    AjaxHelper.patch('api/maps/' + map._id, map);
+  }
+
   function triggerListeners(){
     listeners.forEach(function(listener){
       listener(maps);
@@ -71,8 +86,8 @@ function MapStore() {
         case 'Delete':
           deleteMap(event.payload);
           break;
-        case 'GetMap':
-          getMap(event.payload);
+        case 'Update':
+          updateMap(event.payload);
           break;
         default:
           break;
