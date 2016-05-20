@@ -7,8 +7,10 @@ export default class LocationMap extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddPin = this.handleAddPin.bind(this);
+    this.addPin = this.addPin.bind(this);
     this.state = {
-      addPinOn: false
+      addPinOn: false,
+      pins: []
     };
   }
   handleAddPin () {
@@ -18,28 +20,35 @@ export default class LocationMap extends React.Component {
     if (addPinOn) {
       return;
     }
-
     //change mouse cursor
     this.setState({
-      addPinOn: !addPinOn
+      addPinOn: true
     });
     //listen for next click event
-    window.addEventListener('mousedown.addPin', this.addPin);
+    document.addEventListener('mousedown', this.addPin);
     //add pin at the selected location
   }
   addPin (event) {
-    console.log(31, event);
+    let pin = [{
+      x: event.clientX,
+      y: event.clientY
+    }];
 
-    //window.removeEventListener('mousedown.addPin', this.addPin);
+    this.setState({
+      addPinOn: false,
+      pins: this.state.pins.concat(pin)
+    });
+
+    document.removeEventListener('mousedown', this.addPin);
   }
   render () {
     let { imagePath, mapName } = this.props.locationMap;
-    let wrapperClass = null;
-    let btnClass = null;
+    let wrapperClass = '';
+    let btnClass = '';
 
     if (this.state.addPinOn) {
-      let wrapperClass = ' cursor-pin';
-      let btnClass = 'btn-state-down';
+      wrapperClass = ' cursor-pin';
+      btnClass = 'btn-state-down';
     }
 
     return (
