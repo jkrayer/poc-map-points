@@ -48,7 +48,23 @@ export default class LocationMap extends React.Component {
     let { imagePath, mapName } = this.props.locationMap;
     let wrapperClass = '';
     let btnClass = '';
+    let pins;
 
+    if (this.props.locationMap.pins) {
+      pins = this.props.locationMap.pins.map( (pin, index) => {
+        let style={
+          left: pin.x,
+          top: pin.y
+        };
+        return (
+          <div
+              className="map-pin"
+              key={index}
+              style={style}
+          ></div>
+        );
+      });
+    }
     if (this.state.addPinOn) {
       wrapperClass = ' cursor-pin';
       btnClass = 'btn-state-down';
@@ -65,6 +81,7 @@ export default class LocationMap extends React.Component {
               {"Add Pin"}
           </button>
         </div>
+        {pins}
         <img
             alt={mapName}
             src={imagePath}
