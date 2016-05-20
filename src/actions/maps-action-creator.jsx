@@ -12,5 +12,11 @@ module.exports = {
       payload: mapId,
       type: 'Map:Delete'
     });
+  },
+  update: function (map) {
+    Dispatcher.dispatch({
+      payload: map,
+      type: 'Map:Update'
+    });
   }
 };
