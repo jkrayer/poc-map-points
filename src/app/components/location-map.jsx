@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MapActions from '../../actions/maps-action-creator.jsx';
+import PinActions from '../../actions/pins-action-creator.jsx';
 import PinContainer from './pin-container.jsx';
 
 export default class LocationMap extends React.Component {
@@ -30,18 +31,17 @@ export default class LocationMap extends React.Component {
     //add pin at the selected location
   }
   addPin (event) {
-    let pin = [{
+    let pin ={
+      mapId: this.props.locationMap._id,
       x: event.offsetX,
       y: event.offsetY
-    }];
-    let locationMap = JSON.parse(JSON.stringify(this.props.locationMap));
-    locationMap.pins = locationMap.pins.concat(pin);
+    };
 
     this.setState({
       addPinOn: false
     });
 
-    MapActions.update(locationMap);
+    PinActions.add(pin);
 
     document.removeEventListener('mousedown', this.addPin);
   }
@@ -65,7 +65,7 @@ export default class LocationMap extends React.Component {
               {"Add Pin"}
           </button>
         </div>
-        <PinContainer mapId={this.props.mapId} />
+        <PinContainer mapId={this.props.locationMap._id} />
         <img
             alt={mapName}
             src={imagePath}
