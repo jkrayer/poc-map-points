@@ -43,7 +43,6 @@ function makePinsArray(obj) {
   var pins = [];
 
   for (let key in obj ) {
-    if (key === 'pinKey') { key = x; }
     if (key.indexOf('pins') !== 0) { continue; }
     let index = parseInt(/\d+/.exec(key)[0], 10);
     let pinKey = /\[([a-z]+)\]/i.exec(key)[1];
