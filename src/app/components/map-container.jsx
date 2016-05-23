@@ -17,7 +17,10 @@ export default class MapContainer extends React.Component {
   }
   render () {
     return (
-      <LocationMap locationMap={this.state.locationMap} />
+      <LocationMap
+          locationMap={this.state.locationMap}
+          mapId={this.props.params.mapId}
+      />
     );
   }
 }
