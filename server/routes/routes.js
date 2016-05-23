@@ -1,6 +1,7 @@
 'use strict';
 
 var Map = require('../models/map');
+const Pin = require('../models/pin');
 
 module.exports = function (app) {
   app.route('/api/maps')
@@ -36,6 +37,20 @@ module.exports = function (app) {
           res.status(200).send();
         }
       );
+    });
+  //pins routes
+  app.route('/api/pins')
+    .get(function(req, res) {
+      Pin.find(function (error, doc) {
+        res.send(doc);
+      });
+    })
+    .post(function(req, res){
+      let pinData = req.body;
+      let pin = new Pin(pinData);
+      pin.save(function (error, data) {
+        res.status(300).send();
+      });
     });
 }
 
