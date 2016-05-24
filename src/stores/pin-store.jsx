@@ -65,7 +65,7 @@ console.log(20, mapId);
 
   function triggerListeners(){
     listeners.forEach(function(listener){
-      listener(maps);
+      listener(pins);
     });
   }
 
