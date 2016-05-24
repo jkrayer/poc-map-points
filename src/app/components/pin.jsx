@@ -9,18 +9,24 @@ export default class Pin extends React.Component {
   }
   render () {
     let { content, x, y } = this.props;
-    let style = {
+    let pinStyle = {
       left: x,
-      top: y,
+      top: y
+    };
+    let contentStyle = {
       display: this.state.show ? 'block' : 'none'
     };
 
     return (
-      <div
-          className="map-pin"
-          style={style}
-      >
-        {content}
+      <div className="map-pin-wrapper">
+        <div
+            className="map-pin"
+            style={pinStyle}
+        ></div>
+        <div
+            className="pin-content"
+            style={contentStyle}
+        >{content}</div>
       </div>
     );
   }
