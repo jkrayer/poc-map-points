@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export default class Pin extends React.Component {
+export default class MapPin extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
@@ -41,7 +41,7 @@ export default class Pin extends React.Component {
   }
 }
 
-Pin.propTypes = {
+MapPin.propTypes = {
   _id: React.PropTypes.string,
   content: React.PropTypes.string,
   mapId: React.PropTypes.string,
