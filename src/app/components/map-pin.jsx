@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import PinActions from '../../actions/pin-action-creator.jsx';
+import PinActions from '../../actions/pins-action-creator.jsx';
 
 export default class MapPin extends React.Component {
   constructor(props) {
@@ -15,10 +15,7 @@ export default class MapPin extends React.Component {
     this.handleToggleContent = this.handleToggleContent.bind(this);
   }
   handleBlur (event) {
-    var obj = {
-      _id: this.props._id,
-      content: event.target.value
-    };
+    var obj = Object.assign({}, this.props, {content: this.state.content});
     PinActions.update(obj);
   }
   handleChange (event) {
