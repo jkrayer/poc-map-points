@@ -3,6 +3,7 @@
 var Mongoose = require('mongoose');
 
 const PinSchema = {
+  content: String,
   mapId: String,
   x: Number,
   y: Number
