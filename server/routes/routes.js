@@ -52,4 +52,18 @@ module.exports = function (app) {
         res.status(300).send();
       });
     });
+  app.route('/api/pins/:id')
+    .patch(function(req, res) {
+      Pin.findById(req.params.id,
+        function (error, doc) {
+          for (let key in req.body) {
+            if (key === '_id') { continue; }
+            doc[key] = req.body[key];
+          }
+
+          doc.save();
+          res.status(200).send();
+        }
+      );
+    });
 }
