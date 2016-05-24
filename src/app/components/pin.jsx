@@ -20,7 +20,9 @@ export default class Pin extends React.Component {
       top: y
     };
     let contentStyle = {
-      display: this.state.show ? 'block' : 'none'
+      display: this.state.show ? 'block' : 'none',
+      left: x,
+      top: y
     };
 
     return (
@@ -31,7 +33,7 @@ export default class Pin extends React.Component {
             style={pinStyle}
         ></div>
         <div
-            className="pin-content"
+            className="map-pin-content"
             style={contentStyle}
         >{content}</div>
       </div>
