@@ -17,9 +17,10 @@ function PinStore() {
   }
 
   function getMapPins(mapId) {
-console.log(20, mapId);
-    //filter and return sub array where mapId matches
-    return [];
+    let subArr = pins.filter(function(pin) {
+      return pin.mapId === mapId;
+    });
+    return subArr;
   }
 
   function onChange(listener) {
