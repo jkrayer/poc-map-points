@@ -6,6 +6,12 @@ export default class Pin extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
+    this.handleToggleContent = this.handleToggleContent.bind(this);
+  }
+  handleToggleContent () {
+    this.setState({
+      show: !this.state.show
+    });
   }
   render () {
     let { content, x, y } = this.props;
@@ -21,6 +27,7 @@ export default class Pin extends React.Component {
       <div className="map-pin-wrapper">
         <div
             className="map-pin"
+            onClick={this.handleToggleContent}
             style={pinStyle}
         ></div>
         <div
