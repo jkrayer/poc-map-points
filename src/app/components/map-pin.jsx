@@ -5,16 +5,25 @@ import React from 'react';
 export default class MapPin extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
+    this.state = {
+      content: this.props.content,
+      show: false
+    };
     this.handleToggleContent = this.handleToggleContent.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleToggleContent () {
     this.setState({
       show: !this.state.show
     });
   }
+  handleChange (event) {
+    this.setSate({
+      content: event.target.value
+    });
+  }
   render () {
-    let { content, x, y } = this.props;
+    let { x, y } = this.props;
     let pinStyle = {
       left: x,
       top: y
@@ -35,7 +44,13 @@ export default class MapPin extends React.Component {
         <div
             className="map-pin-content"
             style={contentStyle}
-        >{content}</div>
+        >
+          <textarea
+              onChange={this.handleChange}
+              value={this.state.content}
+          >
+          </textarea>
+        </div>
       </div>
     );
   }
