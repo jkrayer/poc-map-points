@@ -13,7 +13,7 @@ module.exports = {
       type: 'Pin:Delete'
     });
   },
-  update: function (map) {
+  update: function (pin) {
     Dispatcher.dispatch({
       payload: pin,
       type: 'Pin:Update'
