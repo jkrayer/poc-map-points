@@ -12,6 +12,7 @@ export default class MapPin extends React.Component {
     };
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleToggleContent = this.handleToggleContent.bind(this);
   }
   handleBlur (event) {
@@ -22,6 +23,9 @@ export default class MapPin extends React.Component {
     this.setState({
       content: event.target.value
     });
+  }
+  handleDelete () {
+    PinActions.delete(this.props._id);
   }
   handleToggleContent () {
     this.setState({
@@ -51,6 +55,13 @@ export default class MapPin extends React.Component {
             className="map-pin-content"
             style={contentStyle}
         >
+          <div className="map-pin-controls">
+            <button
+                onClick={this.handleDelete}
+                type="button"
+            >{"Delete Pin"}
+            </button>
+          </div>
           <textarea
               onBlur={this.handleBlur}
               onChange={this.handleChange}

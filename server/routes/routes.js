@@ -53,6 +53,13 @@ module.exports = function (app) {
       });
     });
   app.route('/api/pins/:id')
+    .delete(function(req, res) {
+      Pin.findOne({
+        _id: req.params.id
+      }).remove(function (error, result){
+        res.status(300).send();
+      });
+    })
     .patch(function(req, res) {
       Pin.findById(req.params.id,
         function (error, doc) {
