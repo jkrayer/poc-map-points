@@ -29,10 +29,10 @@ module.exports = function (app) {
       Map.findById(req.params.id,
         function (error, doc) {
           for (let key in req.body) {
-            if (key === '_id' || key.indexOf('pins') === 0) { continue; }
+            if (key === '_id') { continue; }
             doc[key] = req.body[key];
           }
-          doc.pins = makePinsArray(req.body)
+
           doc.save();
           res.status(200).send();
         }
@@ -52,24 +52,4 @@ module.exports = function (app) {
         res.status(300).send();
       });
     });
-}
-
-function makePinsArray(obj) {
-  var pins = [];
-
-  for (let key in obj ) {
-    if (key.indexOf('pins') !== 0) { continue; }
-    let index = parseInt(/\d+/.exec(key)[0], 10);
-    let pinKey = /\[([a-z]+)\]/i.exec(key)[1];
-    let pinValue = parseInt(obj[key], 10);
-    if (pins[index]) {
-      pins[index][pinKey] = pinValue;
-      continue;
-    }
-    let o = {};
-    o[pinKey] = pinValue;
-    pins.push(o);
-  }
-
-  return pins;
 }
