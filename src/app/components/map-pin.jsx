@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PinActions from '../../actions/pin-action-creator.jsx';
 
 export default class MapPin extends React.Component {
   constructor(props) {
@@ -9,17 +10,25 @@ export default class MapPin extends React.Component {
       content: this.props.content,
       show: false
     };
-    this.handleToggleContent = this.handleToggleContent.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleToggleContent = this.handleToggleContent.bind(this);
+  }
+  handleBlur (event) {
+    var obj = {
+      _id: this.props._id,
+      content: event.target.value
+    };
+    PinActions.update(obj);
+  }
+  handleChange (event) {
+    this.setState({
+      content: event.target.value
+    });
   }
   handleToggleContent () {
     this.setState({
       show: !this.state.show
-    });
-  }
-  handleChange (event) {
-    this.setSate({
-      content: event.target.value
     });
   }
   render () {
@@ -46,6 +55,7 @@ export default class MapPin extends React.Component {
             style={contentStyle}
         >
           <textarea
+              onBlur={this.handleBlur}
               onChange={this.handleChange}
               value={this.state.content}
           >
