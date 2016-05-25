@@ -34,9 +34,10 @@ function MapStore() {
   }
 
   function addMap(map) {
-    maps.push(map);
-    triggerListeners();
-    AjaxHelper.post('api/maps', map); //.then() for error handling
+    AjaxHelper.post('api/maps', map, (data) => {
+      maps.push(data);
+      triggerListeners();
+    });
   }
 
   function deleteMap(mapId) {

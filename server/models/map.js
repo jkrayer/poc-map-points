@@ -4,8 +4,7 @@ var MapSchema = {
   id: String,
   mapName: String,
   imagePath: String,
-  urlSafeName: String,
-  pins: Array
+  urlSafeName: String
 };
 
 var Map = Mongoose.model('Map', MapSchema, 'Maps');

@@ -3,6 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MapActions from '../../actions/maps-action-creator.jsx';
+import PinActions from '../../actions/pins-action-creator.jsx';
+import PinContainer from './pin-container.jsx';
 
 export default class LocationMap extends React.Component {
   constructor(props) {
@@ -29,18 +31,17 @@ export default class LocationMap extends React.Component {
     //add pin at the selected location
   }
   addPin (event) {
-    let pin = [{
+    let pin ={
+      mapId: this.props.locationMap._id,
       x: event.offsetX,
       y: event.offsetY
-    }];
-    let locationMap = JSON.parse(JSON.stringify(this.props.locationMap));
-    locationMap.pins = locationMap.pins.concat(pin);
+    };
 
     this.setState({
       addPinOn: false
     });
 
-    MapActions.update(locationMap);
+    PinActions.add(pin);
 
     document.removeEventListener('mousedown', this.addPin);
   }
@@ -48,28 +49,11 @@ export default class LocationMap extends React.Component {
     let { imagePath, mapName } = this.props.locationMap;
     let wrapperClass = '';
     let btnClass = '';
-    let pins;
 
-    if (this.props.locationMap.pins) {
-      pins = this.props.locationMap.pins.map( (pin, index) => {
-        let style={
-          left: pin.x,
-          top: pin.y
-        };
-        return (
-          <div
-              className="map-pin"
-              key={index}
-              style={style}
-          ></div>
-        );
-      });
-    }
     if (this.state.addPinOn) {
       wrapperClass = ' cursor-pin';
       btnClass = 'btn-state-down';
     }
-
     return (
       <div className={"location-map-wrapper" + wrapperClass}>
         <div className="control-panel">
@@ -81,7 +65,7 @@ export default class LocationMap extends React.Component {
               {"Add Pin"}
           </button>
         </div>
-        {pins}
+        <PinContainer mapId={this.props.locationMap._id} />
         <img
             alt={mapName}
             src={imagePath}

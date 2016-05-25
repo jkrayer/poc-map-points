@@ -1,5 +1,8 @@
+'use strict';
+
 var Mongoose = require('mongoose');
 var Map = require('./models/map');
+const Pin = require('./models/pin');
 
 Mongoose.connect('mongodb://localhost/mappoints', function () {
   console.log('connected to mongodb');

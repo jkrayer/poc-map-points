@@ -15,7 +15,7 @@ module.exports = {
       }
     );
   },
-  post: function (url, data) {
+  post: function (url, data, callback) {
     return new Promise(
       function (success, error) {
         $.ajax({
@@ -26,7 +26,9 @@ module.exports = {
           error: error
         });
       }
-    );
+    ).then(function(data) {
+      callback(data);
+    });
   },
   patch: function (url, data) {
     return new Promise(
