@@ -2,6 +2,12 @@
 
 import React from 'react';
 import PinActions from '../../actions/pins-action-creator.jsx';
+import Marked from 'marked';
+
+function rawMarkup (str) {
+  var rawMarkup = Marked(str, {sanitize: true});
+  return { __html: rawMarkup };
+}
 
 export default class MapPin extends React.Component {
   constructor(props) {
@@ -68,6 +74,7 @@ export default class MapPin extends React.Component {
               value={this.state.content}
           >
           </textarea>
+          <div dangerouslySetInnerHTML={rawMarkup(this.state.content)} />
         </div>
       </div>
     );
