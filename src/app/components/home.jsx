@@ -32,8 +32,14 @@ export default class Home extends React.Component {
     return (
       <div className="home-wrapper">
         <form onSubmit={this.handleSubmit}>
-          <Input name={'mapName'} label={'Map Name:'} />
-          <Input name={'imagePath'} label={'Image Path:'} />
+          <Input
+              label={'Map Name:'}
+              name={'mapName'}
+          />
+          <Input
+              label={'Image Path:'}
+              name={'imagePath'}
+          />
           <button type="submit">Submit</button>
         </form>
         <ul>
