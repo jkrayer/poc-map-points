@@ -13,8 +13,13 @@ module.exports = function (app) {
     .post(function(req, res){
       let map = req.body;
       let locationMap = new Map(map);
+
       locationMap.save(function (error, data) {
-          res.status(300).send();
+        if (!error) {
+          res.status(200).type('json').send(data);
+        } else {
+          res.status(500).type('json').send(error);
+        }
       });
     });
   app.route('/api/maps/:id')
