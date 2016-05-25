@@ -31,14 +31,14 @@ export default class Home extends React.Component {
 
     return (
       <div className="home-wrapper">
-        <ul>
-          {lis}
-        </ul>
         <form onSubmit={this.handleSubmit}>
           <Input name={'mapName'} label={'Map Name:'} />
           <Input name={'imagePath'} label={'Image Path:'} />
           <button type="submit">Submit</button>
         </form>
+        <ul>
+          {lis}
+        </ul>
       </div>
     );
   }
