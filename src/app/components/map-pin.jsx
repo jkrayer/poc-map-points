@@ -14,11 +14,13 @@ export default class MapPin extends React.Component {
     super(props);
     this.state = {
       content: this.props.content,
+      editing: false,
       show: false
     };
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.handleToggleContent = this.handleToggleContent.bind(this);
   }
   handleBlur (event) {
@@ -32,6 +34,11 @@ export default class MapPin extends React.Component {
   }
   handleDelete () {
     PinActions.delete(this.props._id);
+  }
+  handleEdit () {
+    this.setState({
+      editing: !this.state.editing
+    });
   }
   handleToggleContent () {
     this.setState({
@@ -49,6 +56,9 @@ export default class MapPin extends React.Component {
       left: x,
       top: y
     };
+    let content = (this.state.editing)
+      ? <textarea onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.content}></textarea>
+      : <div dangerouslySetInnerHTML={rawMarkup(this.state.content)} />;
 
     return (
       <div className="map-pin-wrapper">
@@ -67,14 +77,13 @@ export default class MapPin extends React.Component {
                 type="button"
             >{"Delete Pin"}
             </button>
+            <button
+                onClick={this.handleEdit}
+                type="button"
+            >{"Edit"}
+            </button>
           </div>
-          <textarea
-              onBlur={this.handleBlur}
-              onChange={this.handleChange}
-              value={this.state.content}
-          >
-          </textarea>
-          <div dangerouslySetInnerHTML={rawMarkup(this.state.content)} />
+          {content}
         </div>
       </div>
     );
