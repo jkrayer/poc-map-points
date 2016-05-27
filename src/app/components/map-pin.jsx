@@ -41,9 +41,10 @@ export default class MapPin extends React.Component {
     });
   }
   handleToggleContent () {
-    this.setState({
-      show: !this.state.show
-    });
+    let newState = { show: !this.state.show };
+    newState.editing = this.state.show ? this.state.editing : false;
+
+    this.setState(newState);
   }
   render () {
     let { x, y } = this.props;
