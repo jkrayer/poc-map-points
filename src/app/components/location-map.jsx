@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import MapActions from '../../actions/maps-action-creator.jsx';
 import PinActions from '../../actions/pins-action-creator.jsx';
 import PinContainer from './pin-container.jsx';
+import { Link } from 'react-router';
 
 export default class LocationMap extends React.Component {
   constructor(props) {
@@ -57,6 +58,7 @@ export default class LocationMap extends React.Component {
     return (
       <div className={"location-map-wrapper" + wrapperClass}>
         <div className="control-panel">
+          <Link to="/">{"Home"}</Link>
           <button
               className={btnClass}
               onClick={this.handleAddPin}
