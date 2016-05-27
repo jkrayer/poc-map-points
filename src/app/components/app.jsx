@@ -10,7 +10,6 @@ export default class App extends React.Component {
   render () {
     return (
       <div className="app-wrapper">
-        <GlobalToolbar />
         {
           React.cloneElement(
             this.props.children,
