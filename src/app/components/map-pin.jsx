@@ -59,7 +59,7 @@ export default class MapPin extends React.Component {
     };
     let content = (this.state.editing)
       ? <textarea onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.content}></textarea>
-      : <div dangerouslySetInnerHTML={rawMarkup(this.state.content)} />;
+    : <div dangerouslySetInnerHTML={rawMarkup(this.state.content || '')} />;
 
     return (
       <div className="map-pin-wrapper">
