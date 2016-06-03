@@ -27,5 +27,5 @@ MapPin.propTypes = {
       x: React.PropTypes.number,
       y: React.PropTypes.number
     })
-  ).isRequired
+  )
 };
