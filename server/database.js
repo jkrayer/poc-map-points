@@ -5,19 +5,24 @@ var Map = require('./models/map');
 const Pin = require('./models/pin');
 
 Mongoose.connect('mongodb://localhost/mappoints', function () {
-  console.log('connected to mongodb');
 
 //  Mongoose.connection.db.dropDatabase();
-//  var items = [
+//  var maps = [
 //    {
-//      mapName: 'Norway',
-//      imagePath: '/img/norway.png',
-//      urlSafeName: 'norway'
+//      mapName: 'Barovia',
+//      imagePath: '/img/baroviaregion.jpg',
+//      urlSafeName: 'barovia'
+//    },
+//    {
+//      mapName: 'Krezk',
+//      imagePath: '/img/krezk.png',
+//      urlSafeName: 'krezk'
 //    }
 //  ];
 //
-//  items.forEach(function (item) {
+//  maps.forEach(function (item) {
 //    new Map(item).save();
 //  });
 
+  console.log('connected to mongodb');
 });
