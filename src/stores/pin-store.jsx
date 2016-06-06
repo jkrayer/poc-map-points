@@ -28,9 +28,10 @@ function PinStore() {
   }
 
   function addPin(pin) {
-    pins.push(pin);
-    triggerListeners();
-    AjaxHelper.post('api/pins', pin);
+    AjaxHelper.post('api/pins', pin, (data) => {
+      pins.push(data);
+      triggerListeners();
+    });
   }
 
   function deletePin(pinId) {
