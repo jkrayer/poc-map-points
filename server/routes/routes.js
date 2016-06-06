@@ -50,11 +50,15 @@ module.exports = function (app) {
         res.send(doc);
       });
     })
-    .post(function(req, res){
+    .post(function(req, res) {
       let pinData = req.body;
       let pin = new Pin(pinData);
       pin.save(function (error, data) {
-        res.status(300).send();
+      if (!error) {
+        res.status(200).type('json').send(data);
+      } else {
+        res.status(500).type('json').send(error);
+      }
       });
     });
   app.route('/api/pins/:id')
