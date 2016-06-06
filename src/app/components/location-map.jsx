@@ -32,7 +32,7 @@ export default class LocationMap extends React.Component {
     //add pin at the selected location
   }
   addPin (event) {
-    let pin ={
+    let pin = {
       mapId: this.props.locationMap._id,
       x: event.offsetX,
       y: event.offsetY
