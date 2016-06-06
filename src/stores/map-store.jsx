@@ -34,7 +34,7 @@ function MapStore() {
   }
 
   function addMap(map) {
-    AjaxHelper.post('api/maps', map, (data) => {
+    AjaxHelper.post('/api/maps', map, (data) => {
       maps.push(data);
       triggerListeners();
     });
@@ -53,7 +53,7 @@ function MapStore() {
 
     maps.splice(index, 1);
     triggerListeners();
-    AjaxHelper.del('api/maps/' + mapId);
+    AjaxHelper.del('/api/maps/' + mapId);
   }
 
   function updateMap(map) {
@@ -68,7 +68,7 @@ function MapStore() {
     );
     maps.splice(index, 1, map);
     triggerListeners();
-    AjaxHelper.patch('api/maps/' + map._id, map);
+    AjaxHelper.patch('/api/maps/' + map._id, map);
   }
 
   function triggerListeners(){

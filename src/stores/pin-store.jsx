@@ -28,7 +28,7 @@ function PinStore() {
   }
 
   function addPin(pin) {
-    AjaxHelper.post('api/pins', pin, (data) => {
+    AjaxHelper.post('/api/pins', pin, (data) => {
       pins.push(data);
       triggerListeners();
     });
@@ -47,7 +47,7 @@ function PinStore() {
 
     pins.splice(index, 1);
     triggerListeners();
-    AjaxHelper.del('api/pins/' + pinId);
+    AjaxHelper.del('/api/pins/' + pinId);
   }
 
   function updatePin(pin) {
@@ -62,7 +62,7 @@ function PinStore() {
     );
     pins.splice(index, 1, pin);
     triggerListeners();
-    AjaxHelper.patch('api/pins/' + pin._id, pin);
+    AjaxHelper.patch('/api/pins/' + pin._id, pin);
   }
 
   function triggerListeners(){
