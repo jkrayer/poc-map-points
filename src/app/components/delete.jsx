@@ -7,9 +7,18 @@ export default class Delete extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      del: false
+    };
   }
   handleClick () {
-    MapActions.delete(this.props.id);
+    if (this.state.del) {
+      MapActions.delete(this.props.id);
+      return;
+    }
+    this.setState({
+      del: true
+    });
   }
   render () {
     return (
@@ -17,7 +26,7 @@ export default class Delete extends React.Component {
           onClick={this.handleClick}
           type="button"
       >
-        {"Delete"}
+        {this.state.del ? 'Confirm' : 'Delete'}
       </button>
     );
   }
