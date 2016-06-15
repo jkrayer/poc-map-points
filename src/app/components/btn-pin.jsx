@@ -71,7 +71,7 @@ export default class BtnPin extends React.Component {
 }
 
 BtnPin.propTypes = {
-  mapId: React.PropTypes.string.isRequired,
+  mapId: React.PropTypes.string,
   pin: React.PropTypes.shape({}),
   text: React.PropTypes.string.isRequired
 };
