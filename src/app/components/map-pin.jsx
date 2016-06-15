@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import BtnPin from './btn-pin.jsx';
 import PinActions from '../../actions/pins-action-creator.jsx';
 import Marked from 'marked';
 
@@ -73,15 +74,16 @@ export default class MapPin extends React.Component {
             style={contentStyle}
         >
           <div className="map-pin-controls">
-            <button
-                onClick={this.handleDelete}
-                type="button"
-            >{"Delete Pin"}
-            </button>
+            <BtnPin text="Move" pin={this.props} />
             <button
                 onClick={this.handleEdit}
                 type="button"
             >{"Edit"}
+            </button>
+            <button
+                onClick={this.handleDelete}
+                type="button"
+            >{"Delete Pin"}
             </button>
           </div>
           {content}
